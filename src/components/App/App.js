@@ -14,7 +14,7 @@ import Header from '../Header';
 import Map from '../Map';
 import Feedback from '../Feedback';
 import Footer from '../Footer';
-import Modal from '../Modal';
+//import Modal from '../Modal';
 
 class App extends Component {
 
@@ -53,7 +53,7 @@ class App extends Component {
   }
 
   render() {
-      return (<div> <Map /> <Modal /> </div>);
+    return (<div> <Map /> </div>);
     /*return !this.props.error ? (
       <div>
         <Header />
