@@ -7,7 +7,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
 class Map extends Component {
 
-  APIKEY = 'pk.eyJ1IjoiaHVnaGJ6aGFuZyIsImEiOiJjaWtrbXYyNjkwY29rdmtrbWhxb3BudGduIn0.sM9UAirU-Bzzcaw0uo3ONw';
+  APIKEY = 'pk.eyJ1IjoibGVtdXJiIiwiYSI6ImNpcWZnODBzdDAza3Fmb25leThsM3k0a2gifQ.GgYnPPAWnlHQgdp79iNp3A';
   MAPKEY = "hughbzhang.p53e12ao";
   map = null;
 
