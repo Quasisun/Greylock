@@ -3,6 +3,8 @@
 
 import React, { PropTypes, Component } from 'react';
 import s from './Map.css';
+import Sidebar from '../Sidebar';
+
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
 class Map extends Component {
@@ -266,10 +268,11 @@ class Map extends Component {
 
   render = () => {
 
-    return <div
+    return (<div className={s.MapWrap}>
+      <div
       id="map"
       className={s.Map}>
-    </div>
+    </div> </div>)
   }
 
 }

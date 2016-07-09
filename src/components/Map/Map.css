@@ -1,6 +1,15 @@
 .Map {
-  width: 100%;
-  position:absolute;
+  display: inline-block;
+  height: 1500px;
+  position: relative;
   top:0;
   bottom:0;
+  width: 100%;
+
+}
+
+.MapWrap {
+  display: flex;
+  width: 80%;
+  position: relative;
 }
