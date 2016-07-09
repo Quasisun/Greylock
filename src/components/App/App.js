@@ -53,7 +53,7 @@ class App extends Component {
   }
 
   render() {
-      return <div> <Map /> <Modal /> </div>;
+      return (<div> <Map /> <Modal /> </div>);
     /*return !this.props.error ? (
       <div>
         <Header />
