@@ -8,7 +8,6 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 class Map extends Component {
 
   APIKEY = 'pk.eyJ1IjoibGVtdXJiIiwiYSI6ImNpcWZnODBzdDAza3Fmb25leThsM3k0a2gifQ.GgYnPPAWnlHQgdp79iNp3A';
-  MAPKEY = "hughbzhang.p53e12ao";
   map = null;
 
   /*constructor(props) {
@@ -199,8 +198,7 @@ class Map extends Component {
     script.onload = () => {
       // apparently we need a freaking closure for this to work.
       L.mapbox.accessToken = me.APIKEY;
-      me.map = L.mapbox.map('map', me.MAPKEY).setView([37.43, -122.17], 10); // Centered on Stanford Oval with appropriate zoom.
-
+      me.map = L.mapbox.map('map', 'mapbox.streets').setView([37.43, -122.17], 10); // Centered on Stanford Oval with appropriate zoom.
       /*var myLayer = L.mapbox.featureLayer().addTo(me.map);
       var geojson = me.getMapProperties();
       myLayer.on('layeradd', function(e) {
