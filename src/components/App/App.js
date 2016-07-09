@@ -14,12 +14,8 @@ import Header from '../Header';
 import Map from '../Map';
 import Feedback from '../Feedback';
 import Footer from '../Footer';
-<<<<<<< HEAD
-//import Modal from '../Modal';
-=======
 import Sidebar from '../Sidebar';
 import Box from '../Box';
->>>>>>> 07651e16a825c29ab75a681a6325fab704b02b4a
 
 class App extends Component {
 
