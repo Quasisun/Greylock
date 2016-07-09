@@ -15,16 +15,23 @@ import {
 } from 'react-bootstrap'
 
 function FullForm() {
+  const handleAddressChange = () => {
+    console.log("Adding address");
+  }
+
+  const handleSubmit = () => {
+    console.log("Handle submit address");
+  }
 
   return (<Navbar>
-    
+
     <Navbar.Collapse>
       <Navbar.Form pullLeft>
         <FormGroup>
-          <FormControl type="text" placeholder="Address" />
+          <FormControl type="text" placeholder="Address" onChange={ handleAddressChange } />
         </FormGroup>
         {' '}
-        <Button type="submit">Submit</Button>
+          <Button type="submit" onClick={ handleSubmit }>+</Button>
       </Navbar.Form>
     </Navbar.Collapse>
   </Navbar>)
