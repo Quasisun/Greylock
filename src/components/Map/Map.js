@@ -199,9 +199,9 @@ class Map extends Component {
     script.onload = () => {
       // apparently we need a freaking closure for this to work.
       L.mapbox.accessToken = me.APIKEY;
-      me.map = L.mapbox.map('map', me.MAPKEY).setView([37.43, -122.17], 15); // Centered on Stanford Oval with appropriate zoom.
+      me.map = L.mapbox.map('map', me.MAPKEY).setView([37.43, -122.17], 10); // Centered on Stanford Oval with appropriate zoom.
 
-      var myLayer = L.mapbox.featureLayer().addTo(me.map);
+      /*var myLayer = L.mapbox.featureLayer().addTo(me.map);
       var geojson = me.getMapProperties();
       myLayer.on('layeradd', function(e) {
         var marker = e.layer,
@@ -211,7 +211,7 @@ class Map extends Component {
       me.setState({
         geojson: geojson,
         myLayer: myLayer
-      });
+      });*/
     };
 
     var link = document.createElement("link");
@@ -230,9 +230,10 @@ class Map extends Component {
 
   render = () => {
 
-    return <div className={s.Map}> </div>
-
-    
+    return <div
+      id="map"
+      className={s.Map}>
+    </div>
   }
 
 }
