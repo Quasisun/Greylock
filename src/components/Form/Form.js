@@ -14,16 +14,18 @@ import {
   FormControl
 } from 'react-bootstrap'
 
-function FullForm() {
-  const handleAddressChange = () => {
-    console.log("Adding address");
-  }
+const FullForm = React.createClass(
+  handleAddressChange: (value) => {
+    console.log('Value: ');
+    console.log(value)
+    this.setState({ 'currentAddress': value });
+  },
 
-  const handleSubmit = () => {
-    console.log("Handle submit address");
-  }
+  handleSubmit: () => {
 
-  return (<Navbar>
+  },
+
+  render: (<Navbar>
 
     <Navbar.Collapse>
       <Navbar.Form pullLeft>
@@ -34,7 +36,7 @@ function FullForm() {
           <Button type="submit" onClick={ handleSubmit }>+</Button>
       </Navbar.Form>
     </Navbar.Collapse>
-  </Navbar>)
+           </Navbar>),
 }
 
 /*
