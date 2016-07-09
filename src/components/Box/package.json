@@ -1,6 +1,6 @@
 {
-  "name": "Modal",
+  "name": "Box",
   "version": "0.0.0",
   "private": true,
-  "main": "./Modal.js"
+  "main": "./Box.js"
 }
