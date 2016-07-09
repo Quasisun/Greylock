@@ -9,14 +9,12 @@
 
 import React, { Component, PropTypes } from 'react';
 import emptyFunction from 'fbjs/lib/emptyFunction';
-import s from './App.css';
 import Header from '../Header';
 import Map from '../Map';
 import Feedback from '../Feedback';
 import Footer from '../Footer';
-import Modal from '../Modal';
 
-class App extends Component {
+class Modal extends Component {
 
   static propTypes = {
     context: PropTypes.shape({
@@ -53,17 +51,29 @@ class App extends Component {
   }
 
   render() {
-      return <div> <Map /> <Modal /> </div>;
-    /*return !this.props.error ? (
-      <div>
-        <Header />
-        {this.props.children}
-        <Feedback />
-        <Footer />
+   return( <div class='contain'>
+  <div id='modal-content' class='animate modal modal-content active'>
+    <form id='modal-name' class='modal-popup' method='post'>
+      <div class='col6 modal-body fill-white contain'>
+        <a href='#close' class='quiet pad1 icon fr close dark'></a>
+        <div class='fill-blue dark pad2y'>
+          <div class='pad4x center'>
+            <h2>Favorite dog name?</h2>
+          </div>
+          <div class='pad4x pad2y'>
+            <input type='text' name='dog-name' class='round clean stretch space-bottom2' placeholder='e.g Penny' />
+          </div>
+        </div>
+        <div class='fill-gray pad2y pad4x center clearfix'>
+          <input type='submit' class='col6 margin3' value='Submit name!' />
+        </div>
       </div>
-    ) : this.props.children;*/
+    </form>
+  </div>
+</div>);
+
   }
 
 }
 
-export default App;
+export default Modal;
