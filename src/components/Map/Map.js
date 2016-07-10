@@ -251,7 +251,27 @@ class Map extends Component {
 
     if (me.polyline !== null) me.map.removeLayer(me.polyline);
     me.polyline = L.polyline(line_points[0], polyline_options).addTo(me.map);
-    me.map.setView(line_points[0][0], 11);
+    
+  //me.map.setView(line_points[0][0], 11);
+    var Cx = 0.0;
+    var Cy = 0.0;
+
+    homeList.map(function(coordinates) {
+      Cx += coordinates[0]
+      Cy += coordinates[1]
+    })
+
+    Cx /= homeList.length
+    Cy /= homeList.length
+
+    console.log(Cx)
+    console.log(Cy)
+
+    var results = [Cy, Cx];
+    console.log(results)
+    console.log(line_points[0][0])
+
+    me.map.setView(results, 11);
     console.log("ADDED")
   }
 
