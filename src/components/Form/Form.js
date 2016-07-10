@@ -24,10 +24,11 @@ const FullForm = React.createClass({
     this.setState({ 'currentAddress': e.target.value });
   },
 
-  handleSubmit: function() {
+  handleSubmit: function(e) {
     const addresses = this.state.addresses
+    if (this.state.currentAddress == "") return;
     addresses.push(this.state.currentAddress);
-    this.setState({ 'addresses': addresses });
+    this.setState({ 'addresses': addresses, currentAddress: ""});
   },
 
   render: function() {
@@ -38,7 +39,7 @@ const FullForm = React.createClass({
             <Navbar.Collapse>
               <Navbar.Form pullLeft>
           <FormGroup style={{padding:20}}>
-          <FormControl type="text" placeholder="Address" onChange={this.handleAddressChange}/>
+          <FormControl value={this.state.currentAddress} type="text" placeholder="Address" onChange={this.handleAddressChange}/>
         {' '}
           <Button onClick= { this.handleSubmit }
           style={{left: 5, marginLeft: '20px', fontSize: 18, color: 'grey', overflow:'hidden', borderRadius:5, backgroundColor: 'white'}}>
