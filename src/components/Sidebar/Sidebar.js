@@ -20,7 +20,7 @@ class Sidebar extends Component {
     console.log('destination: ');
     console.log(this.state.destination);
 
-    fetchRoutes(addresses, this.state.destination);
+    fetchRoutes(addresses, this.state.destination, this.props.callBack);
   };
 
   render = () => {
