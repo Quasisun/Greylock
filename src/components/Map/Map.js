@@ -237,6 +237,7 @@ class Map extends Component {
         mapFeatures.push({
           "type": "Feature",
           "properties": {
+            "marker-color": "34495e",
             "icon": "harbor",
           },
           "geometry": {
@@ -248,6 +249,7 @@ class Map extends Component {
       mapFeatures.push({
         "type": "Feature",
         "properties": {
+          "marker-color": "#e74c3c",
           "title": "DESTINATION"
         },
         "geometry": {
