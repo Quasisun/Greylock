@@ -14,7 +14,7 @@ function Topbar () {
 		  <Navbar>
 		    <Navbar.Header>
 		      <Navbar.Brand>
-		        
+		        <img src={'http://tinypic.com?ref=3581jpk'} alt="boohoo" className="img-responsive"/>
 		      </Navbar.Brand>
 		    </Navbar.Header>
 		    <Nav>
