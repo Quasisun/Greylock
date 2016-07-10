@@ -4,6 +4,7 @@ import s from './Form.css';
 import Map from '../Map';
 import List from '../List';
 import Sidebar from '../Sidebar';
+import { fetchRoutes } from '../fetchRoutes';
 
 import {
   Form,
@@ -28,7 +29,8 @@ const FullForm = React.createClass({
     if (this.state.currentAddress == "") return;
     addresses.push(this.state.currentAddress);
     this.setState({ 'addresses': addresses, currentAddress: ""});
-    fetchRoutes();
+    
+    fetchRoutes(addresses, this.props.callBack);
   },
 
   render: function() {
