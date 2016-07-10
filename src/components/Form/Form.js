@@ -30,7 +30,7 @@ const FullForm = React.createClass({
     addresses.push(this.state.currentAddress);
     this.setState({ 'addresses': addresses, currentAddress: ""});
     
-    this.props.callBack(fetchRoutes(addresses, this.props.callBack));
+    fetchRoutes(addresses, this.props.callBack);
   },
 
   render: function() {
