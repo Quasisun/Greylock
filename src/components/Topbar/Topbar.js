@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'react-native';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Topbar.css';
 
@@ -14,7 +15,7 @@ function Topbar () {
 		  <Navbar>
 		    <Navbar.Header>
 		      <Navbar.Brand>
-		        <img src="logo.jpg" style="width:304px;height:228px;">
+		        
 		      </Navbar.Brand>
 		    </Navbar.Header>
 		    <Nav>
