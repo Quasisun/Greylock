@@ -228,7 +228,9 @@ class Map extends Component {
         color: '#000'
     }
     var myLayer = L.mapbox.featureLayer().addTo(me.map);
-    var homeList = me.props.points;
+    var homeList = me.props.points.map(function(coordinates) {
+      return coordinates.reverse();
+    });
       var mapFeatures = []
       for (var i = homeList.length - 1; i >= 0; i--) {
         mapFeatures.push({
@@ -245,7 +247,7 @@ class Map extends Component {
       };
       myLayer.setGeoJSON(mapFeatures);
 
-      console.log(line_points[0])
+      console.log(homeList)
 
     if (me.polyline !== null) me.map.removeLayer(me.polyline);
     me.polyline = L.polyline(line_points[0], polyline_options).addTo(me.map);

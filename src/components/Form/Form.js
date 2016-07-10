@@ -15,7 +15,52 @@ import {
   FormControl
 } from 'react-bootstrap'
 
-const FullForm = React.createClass({
+export const DestinationForm = React.createClass({
+  getInitialState: function() {
+    return { 'addresses': [], 'currentAddress': "" };
+  },
+
+  handleAddressChange: function(e) {
+    this.setState({ 'currentAddress': e.target.value });
+  },
+
+  handleSubmit: function(e) {
+    let addresses = this.state.addresses
+    if (this.state.currentAddress == "") return;
+    addresses = [this.state.currentAddress];
+    this.setState({ 'addresses': addresses, currentAddress: ""});
+    this.props.onSet(this.state.currentAddress);
+  },
+
+  render: function() {
+    var me = this;
+    return (
+        <div>
+          <Navbar>
+            <Navbar.Collapse style={{padding:0}}>
+              <Navbar.Form pullLeft style={{padding:0}}>
+          <FormGroup>
+          <div style={{fontSize:'35px'}}>Destination</div>
+          <FormControl value={this.state.currentAddress} type="text" placeholder="Address" onChange={this.handleAddressChange} style={{width: '200px'}}/>
+        {' '}
+          <Button onClick= { this.handleSubmit }
+          style={{left: 5, marginLeft: '10px', fontSize: 15, color: 'grey', overflow:'hidden', borderRadius:5, backgroundColor: 'white'}}>
+          +
+        </Button>
+        </FormGroup>
+
+        <List list={me.state.addresses}/>
+
+          </Navbar.Form>
+          </Navbar.Collapse>
+          </Navbar>
+
+        </div>
+    );
+  }
+});
+
+export const PickupsForm = React.createClass({
   getInitialState: function() {
     return { 'addresses': [], 'currentAddress': "" };
   },
@@ -29,8 +74,7 @@ const FullForm = React.createClass({
     if (this.state.currentAddress == "") return;
     addresses.push(this.state.currentAddress);
     this.setState({ 'addresses': addresses, currentAddress: ""});
-    
-    fetchRoutes(addresses, this.props.callBack);
+    this.props.onSet(addresses);
   },
 
   render: function() {
@@ -41,7 +85,7 @@ const FullForm = React.createClass({
             <Navbar.Collapse style={{padding:0}}>
               <Navbar.Form pullLeft style={{padding:0}}>
           <FormGroup>
-          <div style={{fontSize:'35px'}}>{this.props.name}</div>
+          <div style={{fontSize:'35px'}}>Pickups</div>
           <FormControl value={this.state.currentAddress} type="text" placeholder="Address" onChange={this.handleAddressChange} style={{width: '200px'}}/>
         {' '}
           <Button onClick= { this.handleSubmit }
@@ -64,5 +108,3 @@ const FullForm = React.createClass({
 /*
   onclick and callback
 */
-
-export default withStyles(s)(FullForm);
