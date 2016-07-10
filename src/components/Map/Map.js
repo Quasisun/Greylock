@@ -233,7 +233,7 @@ class Map extends Component {
       return coordinates.reverse();
     });
       var mapFeatures = []
-      for (var i = homeList.length - 1; i >= 0; i--) {
+      for (var i = homeList.length - 1; i > 0; i--) {
         mapFeatures.push({
           "type": "Feature",
           "properties": {
@@ -245,6 +245,16 @@ class Map extends Component {
           }
         });
       };
+      mapFeatures.push({
+        "type": "Feature",
+        "properties": {
+          "title": "DESTINATION"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": homeList[0],
+        }
+      });
       myLayer.setGeoJSON(mapFeatures);
 
       console.log(homeList)
