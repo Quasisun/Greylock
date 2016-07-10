@@ -3,6 +3,7 @@ import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Form.css';
 import Map from '../Map';
+import List from '../List';
 import Sidebar from '../Sidebar';
 
 import {
@@ -30,18 +31,23 @@ const FullForm = React.createClass({
   },
 
   render: function() {
+    var me = this;
     return (
-        <Navbar>
-          <Navbar.Collapse>
-            <Navbar.Form pullLeft>
-              <FormGroup>
-        <FormControl type="text" placeholder="Address" onChange={ this.handleAddressChange } />
-              </FormGroup>
-            {' '}
-        <Button type="submit" onClick={ this.handleSubmit }>+</Button>
-        </Navbar.Form>
-        </Navbar.Collapse>
-        </Navbar>
+        <div>
+          <Navbar>
+            <Navbar.Collapse>
+              <Navbar.Form pullLeft>
+                <FormGroup>
+          <FormControl type="text" placeholder="Address" onChange={ this.handleAddressChange } />
+                </FormGroup>
+              {' '}
+          <Button type="submit" onClick={ this.handleSubmit }>+</Button>
+          </Navbar.Form>
+          </Navbar.Collapse>
+          </Navbar>
+
+          <List list={me.state.addresses}/>
+        </div>
     );
   }
 })

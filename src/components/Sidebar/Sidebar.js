@@ -12,7 +12,7 @@ function Sidebar() {
   var list = ["sts", "stsss"]
 
   return (
-    <div className={s.Sidebar}> <Form /> <List list={list}/> </div>
+    <div className={s.Sidebar}> <Form /> </div>
   );
 }
 
