@@ -11,7 +11,7 @@ import {
 function Topbar () {
 	return(
 	  <div>
-		  <Navbar style={{margin:0}}>
+		  <Navbar style={{margin:0}} className="navbar-inverse">
 		    <Navbar.Header>
 		      <Navbar.Brand>
 		        <img src={'http://tinypic.com?ref=3581jpk'} alt="boohoo" className="img-responsive"/>
