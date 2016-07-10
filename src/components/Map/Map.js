@@ -249,10 +249,15 @@ class Map extends Component {
       myLayer.setGeoJSON(mapFeatures);
 
       console.log(homeList)
+      console.log(line_points[0])
 
-    if (me.polyline !== null) me.map.removeLayer(me.polyline);
-    me.polyline = L.polyline(line_points[0], polyline_options).addTo(me.map);
-    
+    //if (me.polyline !== null) me.map.removeLayer(me.polyline);
+      L.polyline(line_points[x], {color: "#fff"}).addTo(me.map);
+
+    for (var x = 1;x<line_points.length;x++) {
+      L.polyline(line_points[x], polyline_options).addTo(me.map);
+    }
+
   //me.map.setView(line_points[0][0], 11);
     var Cx = 0.0;
     var Cy = 0.0;
