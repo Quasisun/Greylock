@@ -11,6 +11,7 @@ class Map extends Component {
 
   APIKEY = 'pk.eyJ1IjoibGVtdXJiIiwiYSI6ImNpcWZnODBzdDAza3Fmb25leThsM3k0a2gifQ.GgYnPPAWnlHQgdp79iNp3A';
   map = null;
+  polyline = null;
 
   constructor(props) {
     super(props);
@@ -220,7 +221,7 @@ class Map extends Component {
   layers() {
     var me = this;
     if (me.props.paths.length === 0 || me.props.points.length === 0 ) return;
-      var line_points = me.props.paths[0]
+    var line_points = me.props.paths[0]
 
     // http://leafletjs.com/reference.html#polyline
     var polyline_options = {
@@ -244,15 +245,16 @@ class Map extends Component {
       };
       myLayer.setGeoJSON(mapFeatures);
 
-      console.log(line_points)
+      console.log(line_points[0])
 
-    var polyline = L.polyline(line_points, polyline_options).addTo(me.map);
+    if (me.polyline !== null) me.map.removeLayer(me.polyline);
+    me.polyline = L.polyline(line_points[0], polyline_options).addTo(me.map);
+    console.log("ADDED")
   }
 
   render = () => {
 
     var me = this;
-    console.log(this.props.paths)
 
     if (this.map !== null) this.layers();
 
