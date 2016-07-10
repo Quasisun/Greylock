@@ -19,8 +19,7 @@ class List extends Component {
   render = () => {
 
     var list = this.props.list.map(function(text) {
-      console.log(text)
-        return (<ListGroupItem> {text} </ListGroupItem>)
+        return (<ListGroupItem bsStyle="warning"> {text} </ListGroupItem>)
     })
 
     if (list.size == 0) return <div></div>
