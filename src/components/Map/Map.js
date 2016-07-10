@@ -14,10 +14,6 @@ class Map extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      geojson: {},
-      myLayer: {}
-    };
   }
 
   /*makeNewMarker = (name) => {
@@ -195,15 +191,36 @@ class Map extends Component {
   componentDidMount() {
 
     var me = this;
+    console.log("TRYING")
     var script = document.createElement("script");
     script.src = 'https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.js';
     script.onload = () => {
       // apparently we need a freaking closure for this to work.
       L.mapbox.accessToken = me.APIKEY;
-      me.map = L.mapbox.map('map', 'mapbox.streets').setView([37.3938135, -122.0789624], 13); // Centered on Stanford Oval with appropriate zoom
+      if (me.map === null)  me.map = L.mapbox.map('map', 'mapbox.streets').setView([37.3938135, -122.0789624], 13); // Centered on Stanford Oval with appropriate zoom
 
-      if (me.props.path.length === 0 || me.props.points.length === 0 ) return;
-      var line_points = me.props.path[0]
+      
+  };
+
+
+    var link = document.createElement("link");
+    link.href = 'https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.css';
+    link.rel = 'stylesheet';
+    link.type="text/css";
+
+
+    document.body.appendChild(script);
+    document.body.appendChild(link);
+    // var script = document.createElement("script");
+    // script.src = "L.mapbox.accessToken = 'pk.eyJ1IjoiaHVnaGJ6aGFuZyIsImEiOiJjaWtrbXYyNjkwY29rdmtrbWhxb3BudGduIn0.sM9UAirU-Bzzcaw0uo3ONw'; " +
+    // "L.mapbox.map('map', 'mapbox.streets').setView([40, -74.50], 9);";
+    // document.body.appendChild(script);
+  }
+
+  layers() {
+    var me = this;
+    if (me.props.paths.length === 0 || me.props.points.length === 0 ) return;
+      var line_points = me.props.paths[0]
 
     // http://leafletjs.com/reference.html#polyline
     var polyline_options = {
@@ -227,25 +244,17 @@ class Map extends Component {
       };
       myLayer.setGeoJSON(mapFeatures);
 
+      console.log(line_points)
+
     var polyline = L.polyline(line_points, polyline_options).addTo(me.map);
-  };
-
-
-    var link = document.createElement("link");
-    link.href = 'https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.css';
-    link.rel = 'stylesheet';
-    link.type="text/css";
-
-
-    document.body.appendChild(script);
-    document.body.appendChild(link);
-    // var script = document.createElement("script");
-    // script.src = "L.mapbox.accessToken = 'pk.eyJ1IjoiaHVnaGJ6aGFuZyIsImEiOiJjaWtrbXYyNjkwY29rdmtrbWhxb3BudGduIn0.sM9UAirU-Bzzcaw0uo3ONw'; " +
-    // "L.mapbox.map('map', 'mapbox.streets').setView([40, -74.50], 9);";
-    // document.body.appendChild(script);
   }
 
   render = () => {
+
+    var me = this;
+    console.log(this.props.paths)
+
+    if (this.map !== null) this.layers();
 
     return (<div className={s.MapWrap}>
       <div

@@ -7,17 +7,18 @@ import Sidebar from '../Sidebar';
 
 const Box = React.createClass({
   getInitialState: function() {
-  	return {'path': [], 'points': []};
+  	return {'paths': [], 'points': []};
   },
 
-  callBack: function(path, points) {
-  	this.setState({'path': path, 'points': points});
+  callBack: function(data) {
+    var me = this;
+    console.log("HEE")
+  	me.setState({'paths': data.paths, 'points': data.points});
   },
 
   render: function() {
     var me = this;
-    console.log(me)
-  	return (<div className={s.box}> <Map path={this.state.path} points={this.state.points}/> <Sidebar callBack={this.callBack}/> </div>);
+  	return (<div className={s.box}> <Map paths={this.state.paths} points={this.state.points}/> <Sidebar callBack={this.callBack}/> </div>);
   }
 })
 
