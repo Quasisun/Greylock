@@ -8,27 +8,32 @@ import Sidebar from '../Sidebar';
 import {
   Form,
   Input,
-  Button,
   Navbar,
   FormGroup,
-  FormControl
+  FormControl,
+  Button
 } from 'react-bootstrap'
 
 function FullForm() {
 
   return (<Navbar>
-    
     <Navbar.Collapse>
       <Navbar.Form pullLeft>
-        <FormGroup>
+        <FormGroup style={{padding:20}}>
           <FormControl type="text" placeholder="Address" />
-        </FormGroup>
+
         {' '}
-        <Button type="submit">Submit</Button>
+          <Button 
+          style={{left: 5, marginLeft: '20px', fontSize: 18, color: 'grey', overflow:'hidden', borderRadius:5, backgroundColor: 'white'}}>
+          +
+        </Button>
+        </FormGroup>
       </Navbar.Form>
     </Navbar.Collapse>
   </Navbar>)
+
 }
+
 
 /*
   onclick and callback
