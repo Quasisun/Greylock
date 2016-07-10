@@ -24,8 +24,16 @@ import schema from './data/schema';
 import routes from './routes';
 import assets from './assets'; // eslint-disable-line import/no-unresolved
 import { port, auth, analytics } from './config';
+var httpProxy = require('http-proxy');
+var proxy = new httpProxy.createProxyServer({
+  target: {
+    host: 'localhost',
+    port: 2000,
+  },
+});
 
 const app = express();
+
 
 //
 // Tell any CSS tooling (such as Material UI) to use all vendor prefixes if the
@@ -76,6 +84,11 @@ app.use('/graphql', expressGraphQL(req => ({
   rootValue: { request: req },
   pretty: process.env.NODE_ENV !== 'production',
 })));
+
+app.get('/compute_routes.json', function(req, res) {
+  console.log('im tryna fix this');
+  proxy.web(req, res);
+});
 
 //
 // Register server-side rendering middleware

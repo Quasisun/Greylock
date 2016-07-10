@@ -1,8 +1,8 @@
-
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Form.css';
 import Map from '../Map';
+import List from '../List';
 import Sidebar from '../Sidebar';
 
 import {
@@ -23,25 +23,35 @@ const FullForm = React.createClass({
     this.setState({ 'currentAddress': e.target.value });
   },
 
-  handleSubmit: function() {
+  handleSubmit: function(e) {
     const addresses = this.state.addresses
+    if (this.state.currentAddress == "") return;
     addresses.push(this.state.currentAddress);
-    this.setState({ 'addresses': addresses });
+    this.setState({ 'addresses': addresses, currentAddress: ""});
+    fetchRoutes();
   },
 
   render: function() {
+    var me = this;
     return (
-        <Navbar>
-          <Navbar.Collapse>
-            <Navbar.Form pullLeft>
-              <FormGroup>
-        <FormControl type="text" placeholder="Address" onChange={ this.handleAddressChange } />
-              </FormGroup>
-            {' '}
-        <Button type="submit" onClick={ this.handleSubmit }>+</Button>
-        </Navbar.Form>
-        </Navbar.Collapse>
-        </Navbar>
+        <div>
+          <Navbar>
+            <Navbar.Collapse>
+              <Navbar.Form pullLeft>
+          <FormGroup style={{padding:20}}>
+          <FormControl value={this.state.currentAddress} type="text" placeholder="Address" onChange={this.handleAddressChange}/>
+        {' '}
+          <Button onClick= { this.handleSubmit }
+          style={{left: 5, marginLeft: '20px', fontSize: 18, color: 'grey', overflow:'hidden', borderRadius:5, backgroundColor: 'white'}}>
+          +
+        </Button>
+        </FormGroup>
+          </Navbar.Form>
+          </Navbar.Collapse>
+          </Navbar>
+
+          <List list={me.state.addresses}/>
+        </div>
     );
   }
 })
