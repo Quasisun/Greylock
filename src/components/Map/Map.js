@@ -225,7 +225,8 @@ class Map extends Component {
 
     // http://leafletjs.com/reference.html#polyline
     var polyline_options = {
-        color: '#000'
+        color: '#32cd32'
+
     }
     var myLayer = L.mapbox.featureLayer().addTo(me.map);
     var homeList = me.props.points.map(function(coordinates) {
