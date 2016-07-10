@@ -200,56 +200,66 @@ class Map extends Component {
     script.onload = () => {
       // apparently we need a freaking closure for this to work.
       L.mapbox.accessToken = me.APIKEY;
-      me.map = L.mapbox.map('map', 'mapbox.streets').setView([37.830348,-122.486052], 15); // Centered on Stanford Oval with appropriate zoom
-      var myLayer = L.mapbox.featureLayer().addTo(me.map);
-      myLayer.setGeoJSON({
-            "type": "Feature",
-            "properties": {},
-            "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                    [-122.48369693756104, 37.83381888486939],
-                    [-122.48348236083984, 37.83317489144141],
-                    [-122.48339653015138, 37.83270036637107],
-                    [-122.48356819152832, 37.832056363179625],
-                    [-122.48404026031496, 37.83114119107971],
-                    [-122.48404026031496, 37.83049717427869],
-                    [-122.48348236083984, 37.829920943955045],
-                    [-122.48356819152832, 37.82954808664175],
-                    [-122.48507022857666, 37.82944639795659],
-                    [-122.48610019683838, 37.82880236636284],
-                    [-122.48695850372314, 37.82931081282506],
-                    [-122.48700141906738, 37.83080223556934],
-                    [-122.48751640319824, 37.83168351665737],
-                    [-122.48803138732912, 37.832158048267786],
-                    [-122.48888969421387, 37.83297152392784],
-                    [-122.48987674713133, 37.83263257682617],
-                    [-122.49043464660643, 37.832937629287755],
-                    [-122.49125003814696, 37.832429207817725],
-                    [-122.49163627624512, 37.832564787218985],
-                    [-122.49223709106445, 37.83337825839438],
-                    [-122.49378204345702, 37.83368330777276]
-                ]
-            }
-          });
+      me.map = L.mapbox.map('map', 'mapbox.streets').setView([37.3980308, -122.0826198], 13); // Centered on Stanford Oval with appropriate zoom
 
-      me.setState({
-        myLayer: myLayer
-      });
+      var line_points = [
+        [37.3938135, -122.0789624],
+        [37.39337829999999, -122.0778606],
+        [37.394305, -122.0772614],
+        [37.3946652, -122.0781451],
+        [37.3953742, -122.0778545],
+        [37.3974054, -122.0820107],
+        [37.3981199, -122.0815439],
+        [37.3955569, -122.0833889],
+        [37.39790199999999, -122.0814619],
+        [37.3997427, -122.0809042],
+        [37.3991828, -122.0811992],
+        [37.3980308, -122.0826198],
+        [37.4027802, -122.0957311],
+        [37.4115397, -122.092542],
+        [37.4122074, -122.097773],
+        [37.4128391, -122.0975919],
+        [37.4122074, -122.097773],
+        [37.4063543, -122.0781004],
+        [37.4060974, -122.0781059],
+        [37.4058314, -122.0781081],
+        [37.4003961, -122.0731049],
+      ];
 
+    // http://leafletjs.com/reference.html#polyline
+    var polyline_options = {
+        color: '#000'
+    }
+    var myLayer = L.mapbox.featureLayer().addTo(me.map);
+    var homeList = [
+      [-122.09051, 37.391905],
+      [-122.083883, 37.392429],
+      [-122.081737, 37.400337],
+      [-122.079573, 37.392624],
+      [-122.076458, 37.396269],
+      [-122.077245, 37.406044],
+      [-122.075254, 37.402992],
+      [-122.095741, 37.412791],
+      [-122.104818, 37.415972],
+    ];
+      var mapFeatures = []
+      for (var i = homeList.length - 1; i >= 0; i--) {
+        mapFeatures.push({
+          "type": "Feature",
+          "properties": {
+            "title": "WATERMELON",
+            "icon": "harbor",
+          },
+          "geometry": {
+              "type": "Point",
+              "coordinates": homeList[i],
+          }
+        });
+      };
+      myLayer.setGeoJSON(mapFeatures);
 
-      /*var myLayer = L.mapbox.featureLayer().addTo(me.map);
-      var geojson = me.getMapProperties();
-      myLayer.on('layeradd', function(e) {
-        var marker = e.layer,
-        feature = marker.feature;
-      });
-      myLayer.setGeoJSON(geojson);
-      me.setState({
-        geojson: geojson,
-        myLayer: myLayer
-      });*/
-    };
+    var polyline = L.polyline(line_points, polyline_options).addTo(me.map);
+  };
 
 
     var link = document.createElement("link");

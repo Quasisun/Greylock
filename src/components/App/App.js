@@ -17,6 +17,7 @@ import Footer from '../Footer';
 import Sidebar from '../Sidebar';
 import Row from '../Row';
 import Box from '../Box';
+import Topbar from '../Topbar';
 
 class App extends Component {
 
@@ -46,8 +47,24 @@ class App extends Component {
   }
 
   componentWillMount() {
+
     const { insertCss } = this.props.context;
     this.removeCss = insertCss(s);
+  }
+
+  componentDidMount() {
+    this.addCss('https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css')
+  }
+
+  addCss(fileName) {
+    var head = document.head
+    var link = document.createElement('link')
+
+    link.type = 'text/css'
+    link.rel = 'stylesheet'
+    link.href = fileName
+    head.appendChild(link)
+    console.log(link)
   }
 
   componentWillUnmount() {
@@ -55,7 +72,7 @@ class App extends Component {
   }
 
   render() {
-      return (<div> <Box /> </div>);
+      return (<div> <Topbar /> <Box /> </div>);
   }
 
 }
