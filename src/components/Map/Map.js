@@ -221,7 +221,7 @@ class Map extends Component {
   layers() {
     var me = this;
     if (me.props.paths.length === 0 || me.props.points.length === 0 ) return;
-    var line_points = me.props.paths[0]
+    var line_points = me.props.paths
 
     // http://leafletjs.com/reference.html#polyline
     var polyline_options = {
@@ -249,13 +249,17 @@ class Map extends Component {
       myLayer.setGeoJSON(mapFeatures);
 
       console.log(homeList)
-      console.log(line_points[0])
+      console.log(line_points)
 
     //if (me.polyline !== null) me.map.removeLayer(me.polyline);
-      L.polyline(line_points[x], {color: "#fff"}).addTo(me.map);
+    for (var x = 0;x<line_points[0].length;x++) {
+      L.polyline(line_points[0][x], {color: '#fff'}).addTo(me.map);
+    }
 
-    for (var x = 1;x<line_points.length;x++) {
-      L.polyline(line_points[x], polyline_options).addTo(me.map);
+    for (var y = 1;y<line_points.length;y++) {
+      for (var x = 0;x<line_points[y].length;x++) {
+        L.polyline(line_points[y][x], polyline_options).addTo(me.map);
+      }
     }
 
   //me.map.setView(line_points[0][0], 11);
