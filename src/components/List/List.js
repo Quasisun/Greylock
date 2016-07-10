@@ -6,8 +6,8 @@ import Sidebar from '../Sidebar';
 import Row from '../Row';
 
 import {
-  Form,
-  Input,
+  ListGroup,
+  ListGroupItem,
   Button,
   Navbar,
   FormGroup,
@@ -17,13 +17,19 @@ import {
 class List extends Component {
 
   render = () => {
+
     var list = this.props.list.map(function(text) {
-        return (<Row text={text}/>)
+      console.log(text)
+        return (<ListGroupItem> {text} </ListGroupItem>)
     })
 
-    return (<div>
-      {list}
-      </div>)
+    if (list.size == 0) return <div></div>
+
+    return (
+      <ListGroup>
+          {list}
+        </ListGroup>
+        )
   }
 }
 
