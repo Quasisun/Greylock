@@ -17,7 +17,7 @@ function Topbar () {
         fontFamily: "Lato",
         color: "#fff",
         fontWeight: "bold",
-        fontSize: "20px",
+        fontSize: "27px",
       }}>>Transyt
 		      </Navbar.Brand>
 		    </Navbar.Header>
