@@ -14,30 +14,35 @@ import {
   FormControl
 } from 'react-bootstrap'
 
-const FullForm = React.createClass(
-  handleAddressChange: (value) => {
-    console.log('Value: ');
-    console.log(value)
-    this.setState({ 'currentAddress': value });
+const FullForm = React.createClass({
+  handleAddressChange: function(e) {
+    this.setState({ 'currentAddress': e.target.value });
   },
 
-  handleSubmit: () => {
-
+  handleSubmit: function() {
+    const addresses = this.state.addresses
+    addresses.push(this.state.currentAddress);
+    this.setState({ 'addresses': addresses });
+    console.log('Addresses: ');
+    console.log(addresses);
   },
 
-  render: (<Navbar>
-
-    <Navbar.Collapse>
-      <Navbar.Form pullLeft>
-        <FormGroup>
-          <FormControl type="text" placeholder="Address" onChange={ handleAddressChange } />
-        </FormGroup>
-        {' '}
-          <Button type="submit" onClick={ handleSubmit }>+</Button>
-      </Navbar.Form>
-    </Navbar.Collapse>
-           </Navbar>),
-}
+  render: function() {
+    return (
+        <Navbar>
+          <Navbar.Collapse>
+            <Navbar.Form pullLeft>
+              <FormGroup>
+        <FormControl type="text" placeholder="Address" onChange={ this.handleAddressChange } />
+              </FormGroup>
+            {' '}
+        <Button type="submit" onClick={ this.handleSubmit }>+</Button>
+        </Navbar.Form>
+        </Navbar.Collapse>
+        </Navbar>
+    );
+  }
+})
 
 /*
   onclick and callback
