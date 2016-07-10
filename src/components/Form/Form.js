@@ -15,6 +15,10 @@ import {
 } from 'react-bootstrap'
 
 const FullForm = React.createClass({
+  getInitialState: function() {
+    return { 'addresses': [], 'currentAddress': "" };
+  },
+
   handleAddressChange: function(e) {
     this.setState({ 'currentAddress': e.target.value });
   },
@@ -23,8 +27,6 @@ const FullForm = React.createClass({
     const addresses = this.state.addresses
     addresses.push(this.state.currentAddress);
     this.setState({ 'addresses': addresses });
-    console.log('Addresses: ');
-    console.log(addresses);
   },
 
   render: function() {
