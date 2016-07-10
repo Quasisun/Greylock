@@ -200,7 +200,7 @@ class Map extends Component {
       L.mapbox.accessToken = me.APIKEY;
       if (me.map === null)  me.map = L.mapbox.map('map', 'mapbox.streets').setView([37.3938135, -122.0789624], 13); // Centered on Stanford Oval with appropriate zoom
 
-      
+
   };
 
 
@@ -237,7 +237,6 @@ class Map extends Component {
         mapFeatures.push({
           "type": "Feature",
           "properties": {
-            "title": "WATERMELON",
             "icon": "harbor",
           },
           "geometry": {
@@ -291,11 +290,43 @@ class Map extends Component {
 
     if (this.map !== null) this.layers();
 
-    return (<div className={s.MapWrap}>
-      <div
-      id="map"
-      className={s.Map}>
-    </div> </div>)
+    return (
+        <div className={s.MapWrap}>
+        <div id="map" className={s.Map}></div>
+        <span id="bestDistance"
+      style={{ float: 'right',
+               position: 'absolute',
+               right: '100px',
+               bottom: '0px',
+               backgroundColor: '#666',
+               color: '#fff',
+               fontSize: '12px',
+               fontFamily: 'Helvetica',
+               padding: '20px',
+               textAlign: 'Center',
+             }}><span style={{
+               textTransform: 'uppercase',
+               fontWeight: 'bold',
+               letterSpacing: '1px',
+             }}>Transyt</span> <br /> { this.props.bestDistance || "?" } mi</span>
+        <span id="naiveDistance"
+      style={{ float: 'right',
+               position: 'absolute',
+               right: '0px',
+               bottom: '0px',
+               backgroundColor: '#666',
+               color: '#fff',
+               fontSize: '12px',
+               fontFamily: 'Helvetica',
+               padding: '20px',
+               textAlign: 'center',
+             }}><span style={{
+               textTransform: 'uppercase',
+               fontWeight: 'bold',
+               letterSpacing: '1px',
+             }}>Naive</span> <br /> { this.props.naiveDistance || "?" } mi</span>
+
+        </div>)
   }
 
 }

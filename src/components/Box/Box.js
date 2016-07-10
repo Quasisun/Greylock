@@ -12,13 +12,12 @@ const Box = React.createClass({
 
   callBack: function(data) {
     var me = this;
-    console.log("HEE")
-  	me.setState({'paths': data.paths, 'points': data.points});
+  	me.setState({'paths': data.paths, 'points': data.points, 'bestDistance': data.best_distance, 'naiveDistance': data.naive_distance });
   },
 
   render: function() {
     var me = this;
-  	return (<div className={s.box}> <Map paths={this.state.paths} points={this.state.points}/>
+  	return (<div className={s.box}> <Map paths={this.state.paths} points={this.state.points} bestDistance = { this.state.bestDistance } naiveDistance = { this.state.naiveDistance } />
             <Sidebar callBack={this.callBack}
             style={{
               backgroundColor: "#2f2f2f",
