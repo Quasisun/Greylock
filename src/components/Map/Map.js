@@ -249,6 +249,7 @@ class Map extends Component {
 
     if (me.polyline !== null) me.map.removeLayer(me.polyline);
     me.polyline = L.polyline(line_points[0], polyline_options).addTo(me.map);
+    me.map.setView(line_points[0][0], 11);
     console.log("ADDED")
   }
 
