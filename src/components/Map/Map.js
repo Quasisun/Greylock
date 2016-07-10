@@ -201,7 +201,6 @@ class Map extends Component {
       // apparently we need a freaking closure for this to work.
       L.mapbox.accessToken = me.APIKEY;
       me.map = L.mapbox.map('map', 'mapbox.streets').setView([38.89399, -77.03659], 17); // Centered on Stanford Oval with appropriate zoom
-      
 
       var line_points = [
         [38.893596444352134, -77.0381498336792],
@@ -219,11 +218,35 @@ class Map extends Component {
     // http://leafletjs.com/reference.html#polyline
     var polyline_options = {
         color: '#000'
-    };
+    }
+    var myLayer = L.mapbox.featureLayer().addTo(me.map);
+    var homeList = [
+      [-122.09051, 37.391905],
+      [-122.083883, 37.392429],
+      [-122.081737, 37.400337],
+      [-122.079573, 37.392624],
+      [-122.076458, 37.396269],
+      [-122.077245, 37.406044],
+      [-122.075254, 37.402992],
+      [-122.095741, 37.412791],
+      [-122.104818, 37.415972],
+    ];
+      var mapFeatures = []
+      for (var i = homeList.length - 1; i >= 0; i--) {
+        mapFeatures.push({
+          "type": "Feature",
+          "properties": {
+            "title": "WATERMELON",
+            "icon": "harbor",
+          },
+          "geometry": {
+              "type": "Point",
+              "coordinates": homeList[i],
+          }
+        });
+      };
+      myLayer.setGeoJSON(mapFeatures);
 
-    // Defining a polygon here instead of a polyline will connect the
-    // endpoints and fill the path.
-    // http://leafletjs.com/reference.html#polygon
     var polyline = L.polyline(line_points, polyline_options).addTo(me.map);
   };
 
