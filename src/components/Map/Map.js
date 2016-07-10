@@ -28,7 +28,7 @@ class Map extends Component {
     script.onload = () => {
       // apparently we need a freaking closure for this to work.
       L.mapbox.accessToken = me.APIKEY;
-      if (me.map === null)  me.map = L.mapbox.map('map', 'mapbox.streets').setView([37.3938135, -122.0789624], 13); // Centered on Stanford Oval with appropriate zoom
+      if (me.map === null)  me.map = L.mapbox.map('map', 'mapbox.streets').setView([37.3938135, -122.0789624], 15); // Centered on Stanford Oval with appropriate zoom
 
 
   };
@@ -53,22 +53,20 @@ class Map extends Component {
     var line_points = me.props.paths
     
 
-    for (var y = 1;y<Math.min(line_points.length, me.nonce);y++) {
+    for (var y = 0;y<Math.min(line_points.length, me.nonce)-1;y++) {
       for (var x = 0;x<line_points[y].length;x++) {
         L.polyline(line_points[y][x], {opacity: 1.0, color: '#7f8c8d'}).addTo(me.map);
       }
     }
 
 
-    for (var a = 0; a<me.GTFO.length;a++) {
-      me.map.removeLayer(me.GTFO[a])
-    }
+      me.map.removeLayer(me.GTFO)
 
     if (me.nonce >= line_points.length) {
       me.GTFO = []
 
-      for (var x = 0;x<line_points[0].length;x++) {
-        me.GTFO = me.GTFO.concat(line_points[0][x])
+      for (var x = 0;x<line_points[line_points.length-1].length;x++) {
+        me.GTFO = me.GTFO.concat(line_points[line_points.length-1][x])
         console.log(me.GTFO)
         L.polyline(me.GTFO, {opacity: 1.0, color: '#e74c3c'}).addTo(me.map);
       }
@@ -147,7 +145,7 @@ class Map extends Component {
     console.log(results)
     console.log(line_points[0][0])
 
-    me.map.setView(results, 11);
+    me.map.setView(results, 13);
     console.log("ADDED")
   }
 
