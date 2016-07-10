@@ -18,9 +18,9 @@ class Sidebar extends Component {
     console.log('addresses: ');
     console.log(addresses);
     console.log('destination: ');
-    console.log(this.state.destination);
 
-    fetchRoutes(addresses, this.state.destination, this.props.callBack);
+    var a =  fetchRoutes(addresses, this.state.destination, this.props.callBack);
+    //this.props.callBack(a)
   };
 
   render = () => {
