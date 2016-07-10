@@ -7,12 +7,12 @@ import List from '../List';
 import Row from '../Row';
 
 
-function Sidebar() {
+class Sidebar extends Component {
 
   var list = ["sts", "stsss"]
 
   return (
-    <div className={s.Sidebar}> <Form /> </div>
+    <div className={s.Sidebar}> <Form callBack={this.props.callBack}/> </div>
   );
 }
 

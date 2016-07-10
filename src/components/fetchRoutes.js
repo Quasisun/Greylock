@@ -1,6 +1,6 @@
 var $ = require('jquery');
 
-export function fetchRoutes(addresses) {
+export function fetchRoutes(addresses, callback) {
   console.log('fetching routes...');
 
   $.getJSON('/compute_routes.json', {
@@ -8,5 +8,6 @@ export function fetchRoutes(addresses) {
   }, function(data) {
     console.log('Received data from the server: ');
     console.log(data);
+    callback(data)
   });
 }
