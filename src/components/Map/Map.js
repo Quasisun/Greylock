@@ -13,6 +13,7 @@ class Map extends Component {
   map = null;
   polyline = null;
   nonce = 1;
+  GTFO = [];
 
   constructor(props) {
     super(props);
@@ -58,9 +59,18 @@ class Map extends Component {
       }
     }
 
+
+    for (var a = 0; a<me.GTFO.length;a++) {
+      me.map.removeLayer(me.GTFO[a])
+    }
+
     if (me.nonce >= line_points.length) {
+      me.GTFO = []
+
       for (var x = 0;x<line_points[0].length;x++) {
-        L.polyline(line_points[0][x], {opacity: 1.0, color: '#e74c3c'}).addTo(me.map);
+        me.GTFO = me.GTFO.concat(line_points[0][x])
+        console.log(me.GTFO)
+        L.polyline(me.GTFO, {opacity: 1.0, color: '#e74c3c'}).addTo(me.map);
       }
     }
   }
@@ -111,7 +121,6 @@ class Map extends Component {
       console.log(homeList)
       console.log(line_points)
 
-    //if (me.polyline !== null) me.map.removeLayer(me.polyline);
    
     me.nonce = 1;
     setInterval(() => {
