@@ -15,6 +15,7 @@ import Map from '../Map';
 import Feedback from '../Feedback';
 import Footer from '../Footer';
 import Sidebar from '../Sidebar';
+import Row from '../Row';
 import Box from '../Box';
 
 class App extends Component {
