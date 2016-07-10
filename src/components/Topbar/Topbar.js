@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'react-native';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Topbar.css';
 
