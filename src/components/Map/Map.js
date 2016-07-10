@@ -12,7 +12,7 @@ class Map extends Component {
   APIKEY = 'pk.eyJ1IjoibGVtdXJiIiwiYSI6ImNpcWZnODBzdDAza3Fmb25leThsM3k0a2gifQ.GgYnPPAWnlHQgdp79iNp3A';
   map = null;
 
-  /*constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       geojson: {},
@@ -20,7 +20,7 @@ class Map extends Component {
     };
   }
 
-  makeNewMarker = (name) => {
+  /*makeNewMarker = (name) => {
     var map = this.map;
     map.locate();
 
@@ -200,8 +200,9 @@ class Map extends Component {
     script.onload = () => {
       // apparently we need a freaking closure for this to work.
       L.mapbox.accessToken = me.APIKEY;
-      me.map = L.mapbox.map('map', 'mapbox.streets').setView([37.3980308, -122.0826198], 13); // Centered on Stanford Oval with appropriate zoom
+      me.map = L.mapbox.map('map', 'mapbox.streets').setView([37.3938135, -122.0789624], 13); // Centered on Stanford Oval with appropriate zoom
 
+      if (me.props.path.length === 0 || me.props.points.length === 0 ) return;
       var line_points = me.props.path[0]
 
     // http://leafletjs.com/reference.html#polyline
