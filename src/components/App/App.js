@@ -17,6 +17,7 @@ import Footer from '../Footer';
 import Sidebar from '../Sidebar';
 import Row from '../Row';
 import Box from '../Box';
+import Topbar from '../Topbar';
 
 class App extends Component {
 
@@ -55,7 +56,7 @@ class App extends Component {
   }
 
   render() {
-      return (<div> <Box /> </div>);
+      return (<div> <Topbar /> <Box /> </div>);
   }
 
 }
