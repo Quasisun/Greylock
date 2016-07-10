@@ -124,7 +124,7 @@ class Map extends Component {
     setInterval(() => {
       me.nonce++;
       me.path();
-    }, 500)
+    }, 1000)
 
   //me.map.setView(line_points[0][0], 11);
     var Cx = 0.0;
