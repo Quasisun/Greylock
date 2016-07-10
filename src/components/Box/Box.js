@@ -18,7 +18,11 @@ const Box = React.createClass({
 
   render: function() {
     var me = this;
-  	return (<div className={s.box}> <Map paths={this.state.paths} points={this.state.points}/> <Sidebar callBack={this.callBack}/> </div>);
+  	return (<div className={s.box}> <Map paths={this.state.paths} points={this.state.points}/>
+            <Sidebar callBack={this.callBack}
+            style={{
+              backgroundColor: "#2f2f2f",
+            }}/> </div>);
   }
 })
 

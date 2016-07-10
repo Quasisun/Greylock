@@ -72,7 +72,10 @@ class App extends Component {
   }
 
   render() {
-      return (<div> <Topbar /> <Box /> </div>);
+    return (<div>
+            <Topbar />
+            <Box />
+            </div>);
   }
 
 }

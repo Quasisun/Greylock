@@ -35,12 +35,12 @@ export const DestinationForm = React.createClass({
   render: function() {
     var me = this;
     return (
-        <div>
-          <Navbar>
+        <div style={{ backgroundColor: "#2f2f2f" }} >
+        <Navbar style={{ backgroundColor: "#2f2f2f", borderColor: "#2f2f2f" }}>
             <Navbar.Collapse style={{padding:0}}>
               <Navbar.Form pullLeft style={{padding:0}}>
           <FormGroup>
-          <div style={{fontSize:'35px'}}>Destination</div>
+        <div style={{fontSize:'35px', color: '#fff'}}>Destination</div>
           <FormControl value={this.state.currentAddress} type="text" placeholder="Address" onChange={this.handleAddressChange} style={{width: '200px'}}/>
         {' '}
           <Button onClick= { this.handleSubmit }
@@ -81,11 +81,11 @@ export const PickupsForm = React.createClass({
     var me = this;
     return (
         <div>
-          <Navbar>
+          <Navbar style={{ backgroundColor: "#2f2f2f", borderColor: "#2f2f2f" }}>
             <Navbar.Collapse style={{padding:0}}>
               <Navbar.Form pullLeft style={{padding:0}}>
           <FormGroup>
-          <div style={{fontSize:'35px'}}>Pickups</div>
+        <div style={{fontSize:'35px', color: "#fff"}}>Pickups</div>
           <FormControl value={this.state.currentAddress} type="text" placeholder="Address" onChange={this.handleAddressChange} style={{width: '200px'}}/>
         {' '}
           <Button onClick= { this.handleSubmit }

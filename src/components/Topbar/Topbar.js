@@ -11,16 +11,20 @@ import {
 function Topbar () {
 	return(
 	  <div>
-		  <Navbar style={{margin:0}} className="navbar-inverse">
+		  <Navbar style={{margin:0, height: "100%", }} className="navbar-inverse">
 		    <Navbar.Header>
-		      <Navbar.Brand>
-		        <img src={'http://tinypic.com?ref=3581jpk'} alt="boohoo" className="img-responsive"/>
+		  <Navbar.Brand style={{
+        fontFamily: "Lato",
+        color: "#fff",
+        fontWeight: "bold",
+        fontSize: "20px",
+      }}>>Transyt
 		      </Navbar.Brand>
 		    </Navbar.Header>
 		    <Nav>
 		    </Nav>
 		  </Navbar>
-	  </div>	
+	  </div>
 	);
 }
 

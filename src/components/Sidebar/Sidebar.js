@@ -26,7 +26,9 @@ class Sidebar extends Component {
   render = () => {
   return (
 
-      <div className={s.Sidebar}>
+      <div className={s.Sidebar} style={{
+        backgroundColor: "#2f2f2f",
+      }}>
       <DestinationForm onSet = { this.onDestinationSet } />
       <PickupsForm onSet={ this.onPickupsSet } />
       </div>
