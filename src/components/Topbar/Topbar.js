@@ -11,15 +11,13 @@ import {
 function Topbar () {
 	return(
 	  <div>
-		  <Navbar>
+		  <Navbar style={{margin:0}}>
 		    <Navbar.Header>
 		      <Navbar.Brand>
 		        <img src={'http://tinypic.com?ref=3581jpk'} alt="boohoo" className="img-responsive"/>
 		      </Navbar.Brand>
 		    </Navbar.Header>
 		    <Nav>
-		      <NavItem eventKey={1} href="#">Link</NavItem>
-		      <NavItem eventKey={2} href="#">Link</NavItem>
 		    </Nav>
 		  </Navbar>
 	  </div>	

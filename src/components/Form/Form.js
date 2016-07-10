@@ -36,13 +36,13 @@ const FullForm = React.createClass({
     return (
         <div>
           <Navbar>
-            <Navbar.Collapse>
-              <Navbar.Form pullLeft>
-          <FormGroup style={{padding:20}}>
-          <FormControl value={this.state.currentAddress} type="text" placeholder="Address" onChange={this.handleAddressChange}/>
+            <Navbar.Collapse style={{padding:0}}>
+              <Navbar.Form pullLeft style={{padding:0}}>
+          <FormGroup>
+          <FormControl value={this.state.currentAddress} type="text" placeholder="Address" onChange={this.handleAddressChange} style={{width: '200px'}}/>
         {' '}
           <Button onClick= { this.handleSubmit }
-          style={{left: 5, marginLeft: '20px', fontSize: 18, color: 'grey', overflow:'hidden', borderRadius:5, backgroundColor: 'white'}}>
+          style={{left: 5, marginLeft: '10px', fontSize: 15, color: 'grey', overflow:'hidden', borderRadius:5, backgroundColor: 'white'}}>
           +
         </Button>
         </FormGroup>

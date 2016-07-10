@@ -16,7 +16,7 @@ import logoUrl from './logo-small.png';
 
 function Header() {
   return (
-    <div className={s.root}>
+    <div className={s.root} style={{margin:0}}>
       <div className={s.container}>
         <Navigation className={s.nav} />
         <Link className={s.brand} to="/">
